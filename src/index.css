@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@1,400;1,700&display=swap');
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-serif: "Playfair Display", serif;
+  
+  --color-lab-bg: #0f172a;
+  --color-lab-primary: #38bdf8;
+  --color-lab-secondary: #0ea5e9;
+  --color-lab-accent: #f472b6;
+  --color-lab-panel: #1e293b;
+  --color-lab-border: #334155;
+
+  --grid-template-columns-15: repeat(15, minmax(0, 1fr));
+}
+
+@layer base {
+  body {
+    @apply bg-lab-bg text-slate-200 antialiased selection:bg-lab-primary/30;
+  }
+}
+
+.lab-grid-bg {
+  background-image: 
+    linear-gradient(rgba(51, 65, 85, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(51, 65, 85, 0.2) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.glass-panel {
+  @apply bg-lab-panel/50 backdrop-blur-md border border-lab-border;
+}
+
+.mono-label {
+  @apply font-mono text-[10px] uppercase tracking-wider text-slate-400;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-lab-border rounded-full hover:bg-slate-500 transition-colors;
+}
